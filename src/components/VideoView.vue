@@ -54,9 +54,17 @@
 
 import {computed, onMounted, Ref, ref, watch} from "vue";
 import timeFormat from "../unit/timeFormat";
-import {getMusicDt, getAudio, getCurrentMusic, getCurrentTime, setCurrentTime, getCurrent} from "../unit/SongPlay"
+import {
+  getMusicDt,
+  getAudio,
+  getCurrentMusic,
+  getCurrentTime,
+  setCurrentTime,
+  getCurrent,
+  getChangeCurrent
+} from "../unit/SongPlay"
 import MusicProgress from "./Progress.vue";
-import Mask from "./Mask.vue"
+import Mask from "../views/Mask.vue"
 import History from "./History.vue";
 import Player from "./Player.vue"
 import {AR} from "./MusicList.vue";
@@ -65,7 +73,7 @@ import Control from "./Control.vue"
 const showMask = ref<boolean>(false);
 const isShowHistory = ref<boolean>(false);
 const currentTime = getCurrentTime();
-const changeCurrent = ref(0);
+const changeCurrent = getChangeCurrent();
 
 const setPercent = computed(() => {
   return (currentTime.value * 1000 * 100) / getMusicDt();

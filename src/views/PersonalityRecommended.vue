@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="carousel">
-      <carousel :img-list="imgURL" :timeout="5000"></carousel>
+      <carousel :img-list="banners" :timeout="5000"></carousel>
     </div>
     <div>
       <recommend-music></recommend-music>
@@ -12,8 +12,22 @@
 <script setup lang="ts">
 import Carousel from '../components/Carousel.vue'
 import RecommendMusic from './RecommendMusic.vue'
+import {onBeforeMount, ref} from "vue";
+import {getBanner} from "../api/music";
 
-const imgURL = ["/src/static/img/1.jfif", "/src/static/img/2.jfif", "/src/static/img/3.jfif", "/src/static/img/4.jfif", "/src/static/img/5.jfif", "/src/static/img/6.jfif", "/src/static/img/7.jfif",]
+const banners = ref([]);
+
+const getBanners = async () => {
+  await getBanner().then((response: any) => {
+    if (response.code === 200) {
+      banners.value = response.banners.map((item: any) => item.imageUrl);
+    }
+  })
+}
+
+onBeforeMount(() => {
+  getBanners();
+})
 
 </script>
 

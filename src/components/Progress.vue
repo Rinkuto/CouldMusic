@@ -63,12 +63,14 @@ function showSliderMouseListen(e: { clientX: number; clientY: number; }) {
     } else {
       currentWidth.value = left;
     }
-    document.onmouseup = () => {
-      document.onmousemove = null;
-      document.onmouseup = null;
-      emits('percentChange', percentChange);
-    }
+    return false;
   }
+  document.onmouseup = () => {
+    document.onmousemove = null;
+    document.onmouseup = null;
+    emits('percentChange', percentChange);
+  }
+
 }
 
 </script>

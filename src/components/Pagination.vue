@@ -38,6 +38,10 @@ const getTotalPage = computed(() => {
 })
 
 const getMaxPage = computed(() => {
+  if (getTotalPage.value < prop.maxPage) {
+    return generateArray(1, getTotalPage.value)
+  }
+
   if (Math.floor(prop.maxPage / 2) >= prop.currentPage) {
     return generateArray(1, prop.maxPage)
   } else if (Math.floor(prop.maxPage / 2) + prop.currentPage >= getTotalPage.value) {

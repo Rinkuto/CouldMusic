@@ -2,7 +2,7 @@
   专属定制
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "Exclusive"
 }

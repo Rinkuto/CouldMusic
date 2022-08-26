@@ -41,6 +41,7 @@ const AllTracks = ref<Song[]>([]);
 const DetailedInfo = ref(<PlayListInfo>{});
 const isLoading = ref(true);
 const current = ref(0);
+const total = ref(0);
 const barTitle = [
   {title: '歌曲列表', component: MusicList},
   {title: '评论', component: Comment},
@@ -53,7 +54,8 @@ const prop = defineProps({
   },
 })
 provide('songs', AllTracks);
-provide('Play',DetailedInfo)
+provide('Play', DetailedInfo);
+provide('totals', total);
 
 const getAllTracks = async () => {
   const params = {id: prop.id};
@@ -72,6 +74,7 @@ const getDetailedInfo = async () => {
       DetailedInfo.value = response.playlist;
       barTitle[1].title = barTitle[1].title + '(' + response.playlist.commentCount + ')';
       isLoading.value = false;
+      total.value = response.playlist.commentCount;
     }
   })
 }

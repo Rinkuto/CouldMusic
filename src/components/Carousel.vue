@@ -23,7 +23,8 @@
       <span v-for="(item,index) in prop.imgList"
             :key="index"
             :style="setActiveDogs(index)"
-            @mouseover="onClick(index)"></span>
+            @mouseover="onClick(index)">
+      </span>
     </div>
   </div>
 </template>
@@ -197,7 +198,7 @@ function prev() {
   display: block;
 }
 
-.carousel-content.mask .carousel.prev:before, .carousel-content.mask .carousel.next:before {
+.carousel-content .mask .carousel.prev:before, .carousel-content.mask .carousel.next:before {
   background-color: rgba(0, 0, 0, 0.5);
 }
 

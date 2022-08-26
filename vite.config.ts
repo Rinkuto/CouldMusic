@@ -12,5 +12,9 @@ export default defineConfig({
             }
         }
     },
+    base:'./',
     plugins: [vue()]
 })
+
+//https://neteasecloudmusicapi.js.org/#/
+//https://music.cyrilstudio.top/

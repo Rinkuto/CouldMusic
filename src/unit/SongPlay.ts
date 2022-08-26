@@ -113,3 +113,13 @@ export function playEnd() {
         currentTime.value = 0;
     }
 }
+
+const changeCurrent = ref(0);
+
+export function getChangeCurrent() {
+    return changeCurrent;
+}
+
+export function setChangeCurrent(n: number) {
+    changeCurrent.value = n;
+}

@@ -26,7 +26,9 @@
             </router-link>
           </ul>
         </el-header>
-        <el-main class="main">
+        <el-main id="box"
+                 @scroll.passive="scroll"
+                 class="main">
           <router-view></router-view>
         </el-main>
         <el-footer height="70px">
@@ -38,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import {computed, onMounted, ref, watch} from "vue";
+import {computed, onMounted, provide, ref, watch} from "vue";
 import VideoView from "./VideoView.vue"
 import {useRoute} from "vue-router";
 
@@ -56,6 +58,14 @@ const headList = ref([{
   path: '/artist', name: 'artist'
 }, {title: '最新音乐', path: '/album', name: 'Album'}]);
 const route = useRoute();
+const scrollBottom = ref(false);
+let box: HTMLElement;
+
+function scroll() {
+  scrollBottom.value = (box.scrollTop + box.clientHeight + 1) >= box.scrollHeight;
+}
+
+provide('scrollBottom', scrollBottom);
 
 function setClass(i: number) {
   if (route.fullPath === '/discover' && i === 0) {
@@ -65,6 +75,10 @@ function setClass(i: number) {
       return route.fullPath.indexOf(headList.value[i].path) > -1 ? 'headActive' : '';
   }
 }
+
+onMounted(() => {
+  box = document.getElementById('box') as any;
+})
 </script>
 
 <style scoped>

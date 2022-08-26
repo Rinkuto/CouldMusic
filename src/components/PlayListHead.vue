@@ -50,7 +50,10 @@
         标签:<span v-for="(tag,index) in prop.playListInfo.tags"
                  :key="index">
         <span v-if="index !== 0">/</span>
-        <span class="tag">{{ tag }}</span></span>
+          <router-link :to="{name:'songList',params: {tag:tag}}">
+            <span class="tag">{{ tag }}</span>
+          </router-link>
+        </span>
       </div>
       <div class="music-info">
         歌曲: <span class="music-number">{{ length }}</span>

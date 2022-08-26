@@ -148,6 +148,7 @@ function setMusicOrder() {
   display: flex;
   height: 36px;
   margin: 0 auto;
+
 }
 
 .svg-list .music-order {
@@ -164,6 +165,8 @@ function setMusicOrder() {
   color: #ffffff;
   top: -100%;
   left: -7.6%;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .svg-list .music-order svg {

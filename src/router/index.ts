@@ -7,7 +7,7 @@ import Album from "../views/Album.vue"
 import Exclusive from "../views/Exclusive.vue"
 import PlayList from "../views/PlayList.vue"
 import User from "../views/User.vue"
-import Layout from "../components/Layout.vue"
+import ArtistInfo from "../views/ArtistInfo.vue"
 
 const routes: Array<RouteRecordRaw> = [{
     path: '/',
@@ -26,6 +26,7 @@ const routes: Array<RouteRecordRaw> = [{
         path: 'playlist',
         name: 'songList',
         component: SongList,
+        props: true,
     }, {
         path: 'toplist',
         name: 'topList',
@@ -34,6 +35,7 @@ const routes: Array<RouteRecordRaw> = [{
         path: 'artist',
         name: 'artist',
         component: Artist,
+        props: true,
     }, {
         path: 'album',
         name: 'Album',
@@ -48,6 +50,11 @@ const routes: Array<RouteRecordRaw> = [{
     path: '/user/:userId',
     name: 'user',
     component: User,
+    props: true,
+}, {
+    path: '/artist/:id',
+    name: 'artistInfo',
+    component: ArtistInfo,
     props: true,
 }];
 

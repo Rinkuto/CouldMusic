@@ -2,10 +2,8 @@
   最新音乐
 </template>
 
-<script>
-export default {
+<script setup lang="ts">
 
-}
 </script>
 
 <style scoped>

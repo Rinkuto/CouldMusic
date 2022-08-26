@@ -8,9 +8,9 @@
         <span class="username">{{ prop.comment.user.nickname }}：</span>
         {{ prop.comment.content }}
       </div>
-      <div class="be-replied">
-        <span class="username">{{ prop.comment.beReplied.user }}</span>
-        {{ prop.comment.beReplied.content }}
+      <div v-if="prop.comment.beReplied.length !== 0" class="be-replied">
+        <span class="username">@{{ prop.comment.beReplied[0].user.nickname }}：</span>
+        {{ prop.comment.beReplied[0].content }}
       </div>
       <div class="time">{{ prop.comment.timeStr }}</div>
     </div>
@@ -19,7 +19,17 @@
 
 <script setup lang="ts">
 
-import {defineProps, PropType} from "vue";
+import {defineProps, onMounted, PropType, watch} from "vue";
+
+interface BeReplied {
+  user: {
+    userId: number,
+    avatarUrl: string,
+    nickname: string,
+  },
+  content: string,
+  beRepliedCommentId: number,
+}
 
 export interface Comment {
   user: {
@@ -31,15 +41,7 @@ export interface Comment {
   commentId: string,
   timeStr: string,
   time: string,
-  beReplied: {
-    user: {
-      userId: number,
-      avatarUrl: string,
-      nickname: string,
-    },
-    content: string,
-    beRepliedCommentId: number,
-  }
+  beReplied: BeReplied[],
 }
 
 const prop = defineProps({
@@ -49,8 +51,6 @@ const prop = defineProps({
     default: {},
   }
 })
-
-
 </script>
 
 <style scoped>
