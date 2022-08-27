@@ -80,7 +80,7 @@ const setPercent = computed(() => {
 })
 
 
-const music = ref({img: '/src/static/img/cover.68b9bf02.png', name: '歌名', ar: '作者'})
+const music = ref({img: '/src/static/img/cover.68b9bf02.png', name: '歌名', ar: '歌手'})
 watch(getCurrentMusic, (value) => {
   if (value !== null) {
     music.value.name = value.name;
@@ -89,7 +89,7 @@ watch(getCurrentMusic, (value) => {
   } else {
     music.value.img = '/src/static/img/cover.68b9bf02.png';
     music.value.name = '歌名';
-    music.value.ar = '作者';
+    music.value.ar = '歌手';
   }
 })
 

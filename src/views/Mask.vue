@@ -79,7 +79,6 @@ const GetLyric = async () => {
   await getLyric(params).then((response: any) => {
     if (response.code === 200) {
       lyric.value = formatMusicLyrics(response);
-      console.log(lyric.value)
     }
   })
 }
@@ -97,7 +96,6 @@ const getAuthorName = function (ARs: AR[]): string {
 
 onMounted(() => {
   GetLyric();
-  console.log(music)
 })
 </script>
 

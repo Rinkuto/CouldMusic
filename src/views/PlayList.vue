@@ -1,7 +1,7 @@
 <template>
   <div class="play-list">
     <div v-if="isLoading">
-      Loading
+      <loading/>
     </div>
     <div style="width: 100%" v-else>
       <play-list-head :play-list-info="DetailedInfo"

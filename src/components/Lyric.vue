@@ -39,7 +39,7 @@ watch(time, () => {
     if (time.value < prop.lyrics[i].time && time.value > prop.lyrics[i - 1].time) {
       current.value = i - 1;
       if (isScroll.value === false)
-        lyricBox.value.scrollTop = (lyric.value[i - 1].scrollHeight - 2) * (i - 1);
+        lyricBox.value.scrollTop = (lyric.value[i - 1].scrollHeight) * (i);
       return;
     }
   }
@@ -59,6 +59,8 @@ function changeScroll() {
 </script>
 
 <style scoped>
+
+::-webkit-scrollbar{display:none}
 .lyric-box {
   width: 500px;
   height: 530px;
@@ -68,6 +70,9 @@ function changeScroll() {
   overflow-y: hidden;
   overflow-x: hidden;
   display: flex;
+  right: -17px;
+
+  left: 0;
   justify-content: center;
   user-select: none;
 }
@@ -84,7 +89,7 @@ function changeScroll() {
   font-size: 14px;
   white-space: pre-wrap;
   line-height: 32px;
-  margin: 220px 0;
+  padding: 230px 0;
 }
 
 .lyric-box .lyric-list .active {

@@ -93,6 +93,7 @@ onBeforeMount(() => {
   user-select: none;
   width: 92%;
   margin: 0 auto;
+  gap: 18px;
 }
 
 .artist .artist-nav {

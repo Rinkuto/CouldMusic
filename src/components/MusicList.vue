@@ -1,6 +1,6 @@
 <template>
   <div v-if="songs.length === 0">
-
+    <loading></loading>
   </div>
   <div v-else class="music-list">
     <table class="music-table">
@@ -31,7 +31,7 @@
           :key="index"
           :class="current === index?'active':''"
           @click="current = index">
-        <td>{{ index + 1 }}</td>
+        <td>{{ index + 1 < 10 ? '0' + (index + 1) : index + 1 }}</td>
         <td class="operation">
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-heart"
                viewBox="0 0 16 16">
@@ -70,13 +70,9 @@ const title = reactive([{title: '', key: ''}, {title: '操作', key: ''}, {
 const current = ref(-1);
 const sortOrder = ref(0);
 const sortKey = ref(0);
-const filterKey = ref(null);
 
 const filterSongs = computed(() => {
   let data = songs.value;
-  if (filterKey) {
-    //搜索进行筛选
-  }
   const order = sortOrder.value;
   if (order !== 0) {
     const key = title[sortKey.value].key;
@@ -162,7 +158,7 @@ function alName(x: Song, y: Song): number {
 
 export interface AR {
   name: string,
-  id: string,
+  id: number,
 }
 
 export interface Song {
@@ -170,7 +166,7 @@ export interface Song {
   id: number,
   al: {
     picUrl: string,
-    id: string,
+    id: number,
     name: string,
   }
   ar: AR[],

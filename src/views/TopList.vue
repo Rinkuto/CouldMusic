@@ -14,9 +14,9 @@
     <div class="global">
       <div class="title">全球榜</div>
       <div class="list">
-        <PlayListCell v-for="(topList,index) in allTopList.slice(4)"
+        <play-list-cell v-for="(topList,index) in allTopList.slice(4)"
                       :key="index"
-                      :play-list="topList"></PlayListCell>
+                      :play-list="topList"></play-list-cell>
       </div>
     </div>
   </div>

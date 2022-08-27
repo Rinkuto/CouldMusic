@@ -30,7 +30,6 @@ watch(
     })
 
 const getUrl = computed(() => {
-  console.log('https://music.163.com/song/media/outer/url?id=' + musicUrl.value.id + '.mp3')
   return musicUrl.value.url;
 })
 

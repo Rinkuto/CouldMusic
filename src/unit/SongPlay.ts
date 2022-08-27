@@ -9,6 +9,9 @@ const order = ref(0)
 const currentTime = ref<number>(0);
 
 export function getVolume() {
+    if (audio.value === undefined) {
+        return 0;
+    }
     return audio.value.volume;
 }
 

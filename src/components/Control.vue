@@ -98,13 +98,14 @@
                 @percent-change="(n) => setVolume(n.value/100)"
                 @mouseenter="isShowMusicProgress = true"
                 @mouseleave="isShowMusicProgress = false"
-                v-show="isShowMusicProgress && !isMute"></Progress>
+                v-show="isShowMusicProgress && !isMute">
+      </Progress>
     </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref, watch} from "vue";
+import {onMounted, ref, watch} from "vue";
 import {getIsPause, pause, play, prev, next, setOrder, getVolume, setVolume, getAudio} from "../unit/SongPlay";
 import Progress from "./Progress.vue";
 
@@ -115,6 +116,7 @@ const isMute = ref(false);
 const isShowMsg = ref(false);
 const isShowMusicProgress = ref(false);
 const audio = getAudio();
+const volume = ref(getVolume());
 
 function changeState() {
   if (getIsPause().value === false) {
@@ -139,6 +141,10 @@ function setMusicOrder() {
     isShowMsg.value = false;
   }, 2000);
 }
+
+onMounted(() => {
+  volume.value = audio.value.volume
+})
 
 </script>
 

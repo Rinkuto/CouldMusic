@@ -126,6 +126,7 @@ function prev() {
   margin: 0;
   padding: 0;
   background-size: inherit;
+
 }
 
 .carousel-container .carousel-content .carousel {
@@ -143,6 +144,7 @@ function prev() {
   background-position: center;
   background-size: contain;
   transform: translate3d(-50%, 0, -80px);
+  border-radius: 18px;
   z-index: 1;
 }
 
@@ -156,6 +158,7 @@ function prev() {
   background-color: rgba(0, 0, 0, 0);
   transition-delay: 100ms !important;
   transition: all 500ms;
+  border-radius: 18px;
   cursor: pointer;
 }
 
@@ -165,7 +168,7 @@ function prev() {
 }
 
 .carousel-content .carousel.prev {
-  transform: translate3d(-75%, 0, 100px);
+  transform: translate3d(-75%, 0, -100px);
   z-index: 19;
 }
 

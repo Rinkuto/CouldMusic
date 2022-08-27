@@ -109,6 +109,7 @@ const playShow = ref(false);
   overflow: auto;
   word-break: normal;
   color: #606266;
+  text-align: center;
 }
 
 .play-enter-active,
