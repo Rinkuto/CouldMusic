@@ -1,5 +1,8 @@
 <template>
-  <div class="comment" ref="box">
+  <div v-if="comments.length === 0">
+    <loading></loading>
+  </div>
+  <div v-else class="comment" ref="box">
     <comment-cell v-for="(comment,index) in comments"
                   :key="index"
                   :comment="comment"></comment-cell>

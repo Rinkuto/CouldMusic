@@ -6,9 +6,9 @@
     <div class="official">
       <div class="title">官方榜</div>
       <div class="list">
-        <OfficialListCell v-for="(topList,index) in allTopList.slice(0,4)"
+        <official-list-cell v-for="(topList,index) in allTopList.slice(0,4)"
                           :key="index"
-                          :official-list-cell="topList"></OfficialListCell>
+                          :official-list-cell="topList"></official-list-cell>
       </div>
     </div>
     <div class="global">

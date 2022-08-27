@@ -7,7 +7,6 @@
       <recommend-music></recommend-music>
     </div>
     <div class="hot">
-      热门播客
     </div>
   </div>
 </template>

@@ -124,7 +124,8 @@ export interface PlayListInfo {
   createTime: string,
   tags: string[],
   updateTime: number,
-  creator: Creator
+  creator: Creator,
+  trackCount:number,
 }
 </script>
 

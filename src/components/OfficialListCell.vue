@@ -35,6 +35,7 @@ import {PlayListInfo} from "./PlayListHead.vue";
 import {getMusicDetail, getMusicListDetailedInfo, getMusicListAllTracks} from "../api/music";
 import {AR, Song} from "./MusicList.vue";
 import {setMusicList} from "../unit/story";
+import {setCurrent} from "../unit/SongPlay";
 
 const tableList = ref(<Song[]>[]);
 const current = ref(-1);
@@ -68,6 +69,7 @@ const getAllTracks = async () => {
   await getMusicListAllTracks(params).then((response: any) => {
     if (response.code === 200) {
       setMusicList(response.songs);
+      setCurrent(current.value);
     }
   });
 }

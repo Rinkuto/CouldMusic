@@ -22,8 +22,9 @@
           </span>
         </Transition>
       </div>
-      <span class="title">{{ prop.playList.name }}</span>
+      <span :class="prop.showTrack ? 'left':''" class="title">{{ prop.playList.name }}</span>
     </router-link>
+    <span v-if="prop.showTrack" class="track">{{ prop.playList.trackCount }}首</span>
   </div>
 </template>
 
@@ -35,6 +36,7 @@ export interface PlayList {
   picUrl: string,
   coverImgUrl: string,
   playCount: number,
+  trackCount: number,
   id: string,
   name: string,
 }
@@ -44,6 +46,10 @@ const prop = defineProps({
     type: Object as PropType<PlayList>,
     require: true,
     default: {},
+  },
+  showTrack: {
+    type: Boolean,
+    default: false,
   }
 });
 const playShow = ref(false);
@@ -111,6 +117,18 @@ const playShow = ref(false);
   color: #606266;
   text-align: center;
 }
+
+.card .left {
+  text-align: left;
+}
+
+.card .track {
+  color: #606266;
+  font-size: 13px;
+  text-align: left;
+  float: left;
+}
+
 
 .play-enter-active,
 .play-leave-active {

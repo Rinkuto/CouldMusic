@@ -1,11 +1,15 @@
 <template>
   <div class="box">
     <div class="head-img">
-      <img :src="prop.comment.user.avatarUrl" alt="">
+      <router-link :to="{name:'user',params:{userId:prop.comment.user.userId}}">
+        <img :src="prop.comment.user.avatarUrl" alt="">
+      </router-link>
     </div>
     <div class="comment">
       <div class="content">
-        <span class="username">{{ prop.comment.user.nickname }}：</span>
+        <router-link :to="{name:'user',params:{userId:prop.comment.user.userId}}">
+          <span class="username">{{ prop.comment.user.nickname }}：</span>
+        </router-link>
         {{ prop.comment.content }}
       </div>
       <div v-if="prop.comment.beReplied.length !== 0" class="be-replied">

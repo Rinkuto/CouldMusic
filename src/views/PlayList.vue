@@ -7,15 +7,8 @@
       <play-list-head :play-list-info="DetailedInfo"
                       :creator="DetailedInfo.creator"
                       :length="AllTracks.length"></play-list-head>
-      <div class="bar">
-        <div class="item" v-for="(item,index) in barTitle"
-             :key="item"
-             :class="current === index ? 'active':''"
-             @click="current = index">
-          <span>{{ item.title }}</span>
-          <div class="indicator"></div>
-        </div>
-      </div>
+      <bar :bars="barTitle.map((item) => item.title)"
+           @click-bars="getClick"></bar>
       <div>
         <keep-alive>
           <Transition name="music" mode="out-in">
@@ -36,6 +29,7 @@ import MusicList from "../components/MusicList.vue"
 import Comment from "../components/Comment.vue"
 import Collection from "../components/Collector.vue";
 import {Song} from "../components/MusicList.vue";
+import Bar from "../components/Bar.vue"
 
 const AllTracks = ref<Song[]>([]);
 const DetailedInfo = ref(<PlayListInfo>{});
@@ -79,6 +73,10 @@ const getDetailedInfo = async () => {
   })
 }
 
+function getClick(i: number) {
+  current.value = i;
+}
+
 onMounted(() => {
   getDetailedInfo();
   getAllTracks();
@@ -90,33 +88,6 @@ onMounted(() => {
 .play-list {
   display: flex;
   width: 100%;
-}
-
-.play-list .bar {
-  margin-top: 40px;
-  display: flex;
-  justify-content: left;
-  user-select: none;
-  gap: 0 20px;
-}
-
-.play-list .bar .item {
-  cursor: pointer;
-}
-
-.play-list .bar .active {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.play-list .bar .active .indicator {
-  margin-top: 5px;
-  margin-left: 50%;
-  transform: translate(-50%);
-  width: 36px;
-  height: 4px;
-  background: #1DCF9f;
-  border-radius: 20px;
 }
 
 .music-enter-active,

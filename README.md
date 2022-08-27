@@ -5,7 +5,7 @@ API来自 [Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseC
 
 # 技术栈
 ## Vue v3.x
-## Vite v2.x
+## Vite v3.x
 ## Vue Router v4.x
 ## Typescript
 <br/>

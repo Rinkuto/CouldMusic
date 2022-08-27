@@ -173,6 +173,7 @@ onMounted(() => {
   left: -7.6%;
   text-align: center;
   margin: 0 auto;
+  user-select: none;
 }
 
 .svg-list .music-order svg {

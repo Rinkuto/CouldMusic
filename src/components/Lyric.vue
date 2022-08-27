@@ -67,18 +67,13 @@ function changeScroll() {
   padding: 20px;
   margin: auto 0;
   position: relative;
-  overflow-y: hidden;
+  overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
   right: -17px;
-
   left: 0;
   justify-content: center;
   user-select: none;
-}
-
-.lyric-box:hover {
-  overflow-y: overlay;
 }
 
 .lyric-box .lyric-list {
